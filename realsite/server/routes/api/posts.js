@@ -12,10 +12,11 @@ router.get('/', async (req, res) => {
 
 // Add Post
 router.post('/', async (req, res) => {
-    const posts = await loadPostCollection();
+    const posts = await loadPostsCollection();
+    
     await posts.insertOne({
         text: req.body.text,
-        createdAt: newDate()
+        createdAt: new Date()
     });
     res.Status(201).send();
 });
